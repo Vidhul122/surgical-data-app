@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Patient Dashboard</title>
+</head>
+<body>
+  <h2>Patient Dashboard</h2>
+
+  <!-- Display patient's name and ID -->
+  <p><strong>Patient Name:</strong> <span id="displayName"></span></p>
+  <p><strong>Patient ID:</strong> <span id="displayID"></span></p>
+
+  <hr>
+
+  <!-- Navigation buttons -->
+  <h3>Fill Patient Data:</h3>
+  <ul>
+    <li><a href="preop.html">📝 Preoperative Form</a></li>
+    <li><a href="intraop.html">🔪 Intraoperative Form</a></li>
+    <li><a href="postop.html">🏥 Postoperative Form</a></li>
+    <li><a href="followup.html">📆 Follow-up Form</a></li>
+  </ul>
+
+  <script>
+    // Get stored values from localStorage
+    const name = localStorage.getItem("patientName");
+    const id = localStorage.getItem("patientID");
+
+    // Display them on the page
+    document.getElementById("displayName").textContent = name || "Not Found";
+    document.getElementById("displayID").textContent = id || "Not Found";
+  </script>
+</body>
+</html>

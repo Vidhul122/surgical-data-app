@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Preoperative Form</title>
+</head>
+<body>
+  <h2>Preoperative Form</h2>
+
+  <p><strong>Patient Name:</strong> <span id="displayName"></span></p>
+  <p><strong>Patient ID:</strong> <span id="displayID"></span></p>
+
+  <iframe id="preopForm" width="100%" height="1000px" frameborder="0" marginheight="0" marginwidth="0">
+    Loading…
+  </iframe>
+
+  <script>
+    const name = localStorage.getItem("patientName");
+    const id = localStorage.getItem("patientID");
+
+    // Display patient info
+    document.getElementById("displayName").textContent = name || "Not Found";
+    document.getElementById("displayID").textContent = id || "Not Found";
+
+    // Pre-filled Google Form
+    const baseFormURL = "https://docs.google.com/forms/d/e/1FAIpQLScWPBu-6l5IBnUP7YGFpElh20AWSsKPbYXv2FbIxyN-AzLSHA/viewform?usp=pp_url";
+    const nameEntryID = "entry.642521459";
+    const idEntryID = "entry.1401542303";
+
+    const fullFormURL = `${baseFormURL}&${nameEntryID}=${encodeURIComponent(name)}&${idEntryID}=${encodeURIComponent(id)}`;
+
+    // Set iframe source
+    document.getElementById("preopForm").src = fullFormURL;
+  </script>
+</body>
+</html>
